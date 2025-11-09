@@ -29,18 +29,24 @@ import {
 import { UserMenuContent } from '@/components/user-menu-content';
 import { useInitials } from '@/hooks/use-initials';
 import { cn, isSameUrl, resolveUrl } from '@/lib/utils';
-import { dashboard } from '@/routes';
 import { type BreadcrumbItem, type NavItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { LayoutGrid, Menu, Search } from 'lucide-react';
+import { BookOpenText, Menu, Search, PenToolIcon } from 'lucide-react';
 import AppLogo from './app-logo';
 import AppLogoIcon from './app-logo-icon';
+import articles from '@/routes/articles';
+import news from '@/routes/news';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
+        title: 'Articles',
+        href: articles.index(),
+        icon: BookOpenText,
+    },
+    {
+        title: 'Customize News Preferences',
+        href: news.preferences.edit(),
+        icon: PenToolIcon,
     },
 ];
 
@@ -129,7 +135,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                     </div>
 
                     <Link
-                        href={dashboard()}
+                        href={articles.index()}
                         prefetch
                         className="flex items-center space-x-2"
                     >
