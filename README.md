@@ -70,8 +70,6 @@ docker-compose up -d --build
 
 This will build the `app` image (running `npm run build` in the process) and start all four services in the background.
 
-Note: The app will be accessible at **[http://localhost:8080](http://localhost:8080)**
-
 ### 3. Post-Installation Commands
 
 The first time you run the app, you need to run these commands to finalize the Laravel setup.
@@ -87,10 +85,19 @@ docker-compose exec app php artisan migrate
 docker-compose exec app php artisan storage:link
 ```
 
+And the following command to run the initial data scraping:
+
+```sh
+# Fetch initial articles from the news sources (since the scheduler is disabled by default)
+docker-compose exec app php artisan news:fetch-articles
+
+# (Optional) If you want to enable the schedule go to console.php and uncomment the scheduler line
+```
+
 ### 4. Access Your Application
 
-You can now access your application in your browser at:
-**[http://localhost:8080](https://www.google.com/search?q=http://localhost:8080)**
+You can now access the application in your browser at:
+**[http://localhost:8080](http://localhost:8080)**
 
 ### Other Useful Docker Commands
 
