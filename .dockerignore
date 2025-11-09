@@ -1,0 +1,10 @@
+# Ignore build artifacts and dependencies
+/vendor
+/node_modules
+
+# Ignore local environment file
+.env
+
+# Ignore git
+.git
+.gitignore
